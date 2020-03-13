@@ -5,7 +5,7 @@ import Input from "../layout/Input";
 
 export default function CharacterList() {
   const [characters, setCharacters] = useState([]);
-  const [request, setRequest] = useState();
+  const [request, setRequest] = useState("");
 
   useEffect(() => {
     axios
