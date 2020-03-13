@@ -20,7 +20,7 @@ export default function CharacterList() {
 
   return (
     <>
-      <Input setRequest={setRequest} />
+      <Input setRequest={setRequest} request={request} />
       {characters ? (
         <div className="row">
           {characters.map((character, i) => (

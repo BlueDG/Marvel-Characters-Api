@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Input({ setRequest }) {
+export default function Input({ setRequest, request }) {
   return (
     <InputText
       type="text"
       placeholder="Search"
+      value={request}
       onChange={e => setRequest(e.target.value)}
     />
   );
