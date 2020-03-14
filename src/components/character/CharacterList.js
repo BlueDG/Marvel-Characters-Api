@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import Input from "../layout/Input";
+import { useDebounce } from "use-debounce";
+import { fetchCharacters } from "../../utils/api";
 
 export default function CharacterList() {
   const [request, setRequest] = useState("");
+  const [debouncedRequest] = useDebounce(request, 900);
   const [characters, setCharacters] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`https://gateway.marvel.com/v1/public/characters?`, {
-        params: {
-          apikey: "842e0f7fc65303bb961dd05090a7323b"
-        }
-      })
-      .then(res => setCharacters(res.data.data.results))
-      .catch(_ => setCharacters([]));
-  }, [request]);
+  useEffect(() => fetchCharacters(setCharacters, debouncedRequest), [
+    debouncedRequest
+  ]);
 
   return (
     <>
       <Input setRequest={setRequest} />
-      {characters ? (
+      {characters.length > 0 ? (
         <div className="row">
           {characters.map((character, i) => (
             <CharacterCard key={i} id={character.id} index={i + 1} />
