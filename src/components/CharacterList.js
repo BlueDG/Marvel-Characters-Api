@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CharacterCard from "./CharacterCard";
-import Input from "../layout/Input";
+import Input from "./Input";
 import { useDebounce } from "use-debounce";
-import { fetchCharacters } from "../../utils/api";
+import { fetchCharacters } from "../utils/api";
 
 export default function CharacterList() {
   const [request, setRequest] = useState("");
@@ -23,7 +23,7 @@ export default function CharacterList() {
           ))}
         </div>
       ) : (
-        <h1>Loading Characters ... </h1>
+        <h1>Searching ... </h1>
       )}
     </>
   );

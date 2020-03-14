@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo/logo_marvel.jpg";
+import logo from "../assets/images/logo.jpg";
 
 export default function NavBar() {
   return (

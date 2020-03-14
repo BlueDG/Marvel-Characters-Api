@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// CSS FOR CHARACTER.JS
 export const TopContainer = styled.div`
   display: flex;
   width: 100%;

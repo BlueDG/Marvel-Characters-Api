@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import loadingGif from "./gif/ddl_wait.gif";
+import loadingGif from "../assets/images/loading.gif";
 
 export default function CharacterCard({ id, index }) {
   const [character, setCharacter] = useState([]);
