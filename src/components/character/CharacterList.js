@@ -4,12 +4,12 @@ import CharacterCard from "./CharacterCard";
 import Input from "../layout/Input";
 
 export default function CharacterList() {
-  const [characters, setCharacters] = useState([]);
   const [request, setRequest] = useState("");
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://gateway.marvel.com/v1/public/characters?`, {
+      .get(`https://gateway.marvel.com/v1/public/characters?name=${request}`, {
         params: {
           apikey: "842e0f7fc65303bb961dd05090a7323b"
         }
@@ -20,7 +20,7 @@ export default function CharacterList() {
 
   return (
     <>
-      <Input setRequest={setRequest} request={request} />
+      <Input setRequest={setRequest} />
       {characters ? (
         <div className="row">
           {characters.map((character, i) => (
