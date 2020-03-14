@@ -9,7 +9,7 @@ export default function CharacterList() {
 
   useEffect(() => {
     axios
-      .get(`https://gateway.marvel.com/v1/public/characters?name=${request}`, {
+      .get(`https://gateway.marvel.com/v1/public/characters?`, {
         params: {
           apikey: "842e0f7fc65303bb961dd05090a7323b"
         }
