@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import loadingGif from "../assets/images/loading.gif";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import loadingGif from '../assets/images/loading.gif';
 
 export default function CharacterCard({ id, index }) {
   const [character, setCharacter] = useState([]);
@@ -11,7 +11,7 @@ export default function CharacterCard({ id, index }) {
   useEffect(() => {
     axios
       .get(`https://gateway.marvel.com:443/v1/public/characters/${id}`, {
-        params: { apikey: "842e0f7fc65303bb961dd05090a7323b" }
+        params: { apikey: '842e0f7fc65303bb961dd05090a7323b' }
       })
       .then(res => setCharacter(res.data.data.results))
       .catch(_ => setCharacter([]));
@@ -26,21 +26,21 @@ export default function CharacterCard({ id, index }) {
               <StyledLink to={`/character${c.id}`}>
                 <Card className="card">
                   <h5 className="card-header">{index}</h5>
-                  {imageLoading ? (
+                  {imageLoading && (
                     <img
                       src={loadingGif}
                       alt="gif"
-                      style={{ width: "5em", height: "5em" }}
+                      style={{ width: '5em', height: '5em' }}
                       className="card-img-top rounder mx-auto d-block mt-2"
                     />
-                  ) : null}
+                  )}
                   <Thumbnail
                     className="card-img-top rounded mx-auto mt-2"
                     src={`${c.thumbnail.path}.${c.thumbnail.extension}`}
                     onLoad={() => {
                       setImageLoading(false);
                     }}
-                    style={imageLoading ? null : { display: "block" }}
+                    style={imageLoading ? null : { display: 'block' }}
                   />
                   <div className="card-body mx-auto">
                     <h6 className="card-title">{c.name}</h6>
